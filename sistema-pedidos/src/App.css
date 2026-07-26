@@ -1,0 +1,267 @@
+/* Fondo de la aplicación */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #FFF7FA, #FFEAF4);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tarjeta principal */
+.contenedor {
+  width: 700px;
+  margin: 40px auto;
+  background: white;
+  padding: 35px;
+  border-radius: 25px;
+  box-shadow: 0px 12px 30px rgba(236, 64, 122, 0.15);
+}
+
+/* Título principal */
+h1 {
+  text-align: center;
+  color: #C2185B;
+  font-size: 34px;
+  margin-bottom: 5px;
+}
+
+/* Subtítulos */
+h2 {
+  color: #D81B60;
+  margin-bottom: 20px;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #6A1B4D;
+  font-weight: bold;
+}
+
+/* Cajas de texto */
+input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 2px solid #F8BBD0;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+/* Cuando el usuario escribe */
+input:focus {
+  outline: none;
+  border-color: #EC407A;
+  box-shadow: 0px 0px 10px rgba(236,64,122,.25);
+}
+
+/* Botón */
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg,#F48FB1,#EC407A);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+/* Efecto al pasar el mouse */
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 15px rgba(236,64,122,.35);
+}
+
+hr{
+    border:none;
+    border-top:1px solid #F8BBD0;
+    margin:35px 0;
+}
+.lista-clientes{
+    margin-top:30px;
+}
+
+.tarjeta-cliente{
+
+    background: white;
+
+    border-radius:20px;
+
+    padding:22px;
+
+    margin-bottom:20px;
+
+    border-left:8px solid #EC407A;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    transition:all .30s ease;
+
+}
+.tarjeta-cliente:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 30px rgba(236,64,122,.25);
+
+}
+
+.tarjeta-cliente h3{
+
+    margin:0;
+
+    color:#C2185B;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+.tarjeta-cliente p{
+
+    color:#555;
+
+    margin:10px 0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.botones{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.editar{
+
+    flex:1;
+
+    background:#F8BBD0;
+
+    color:#6A1B4D;
+
+    font-weight:bold;
+
+}
+
+.editar:hover{
+
+    background:#EC407A;
+
+    color:white;
+
+}
+
+.eliminar{
+
+    flex:1;
+
+    background:#EF5350;
+
+    color:white;
+
+    font-weight:bold;
+
+}
+
+.eliminar:hover{
+
+    background:#C62828;
+
+}
+
+input:hover{
+    border-color:#EC407A;
+}
+/* ===========================
+   ENCABEZADO
+=========================== */
+
+.encabezado{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#FCE4EC,#F8BBD0);
+
+}
+
+.encabezado h1{
+
+    margin:0;
+
+    color:#C2185B;
+
+}
+
+.encabezado p{
+
+    margin:10px 0;
+
+    color:#6A1B4D;
+
+    font-size:18px;
+
+}
+
+.encabezado small{
+
+    color:#7B1FA2;
+
+    font-size:15px;
+
+    /*==========================
+FOOTER
+===========================*/
+
+.footer{
+
+    text-align:center;
+
+    margin-top:40px;
+
+    padding:20px;
+
+    border-top:2px solid #F8BBD0;
+
+}
+
+.footer p{
+
+    color:#C2185B;
+
+    font-weight:bold;
+
+    margin-bottom:5px;
+
+}
+
+.footer small{
+
+    color:#777;
+
+}
+}

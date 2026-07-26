@@ -1,267 +1,273 @@
-/* Fondo de la aplicación */
+/* ===========================
+   ESTILOS GENERALES
+=========================== */
+
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #FFF7FA, #FFEAF4);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #FFFDFB, #FCE4EC);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #5D4037;
 }
 
-/* Tarjeta principal */
+/* ===========================
+   CONTENEDOR PRINCIPAL
+=========================== */
+
 .contenedor {
-  width: 700px;
+  width: 90%;
+  max-width: 900px;
   margin: 40px auto;
-  background: white;
-  padding: 35px;
+  background: #ffffff;
   border-radius: 25px;
-  box-shadow: 0px 12px 30px rgba(236, 64, 122, 0.15);
+  padding: 35px;
+  box-shadow: 0px 15px 35px rgba(0,0,0,.12);
 }
 
-/* Título principal */
-h1 {
-  text-align: center;
-  color: #C2185B;
-  font-size: 34px;
-  margin-bottom: 5px;
-}
-
-/* Subtítulos */
-h2 {
-  color: #D81B60;
-  margin-bottom: 20px;
-}
-
-/* Etiquetas */
-label {
-  display: block;
-  margin-bottom: 6px;
-  color: #6A1B4D;
-  font-weight: bold;
-}
-
-/* Cajas de texto */
-input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 18px;
-  border: 2px solid #F8BBD0;
-  border-radius: 12px;
-  font-size: 15px;
-  transition: 0.3s;
-  box-sizing: border-box;
-}
-
-/* Cuando el usuario escribe */
-input:focus {
-  outline: none;
-  border-color: #EC407A;
-  box-shadow: 0px 0px 10px rgba(236,64,122,.25);
-}
-
-/* Botón */
-button {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(90deg,#F48FB1,#EC407A);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: .3s;
-}
-
-/* Efecto al pasar el mouse */
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 8px 15px rgba(236,64,122,.35);
-}
-
-hr{
-    border:none;
-    border-top:1px solid #F8BBD0;
-    margin:35px 0;
-}
-.lista-clientes{
-    margin-top:30px;
-}
-
-.tarjeta-cliente{
-
-    background: white;
-
-    border-radius:20px;
-
-    padding:22px;
-
-    margin-bottom:20px;
-
-    border-left:8px solid #EC407A;
-
-    box-shadow:0 6px 18px rgba(0,0,0,.08);
-
-    transition:all .30s ease;
-
-}
-.tarjeta-cliente:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:0 15px 30px rgba(236,64,122,.25);
-
-}
-
-.tarjeta-cliente h3{
-
-    margin:0;
-
-    color:#C2185B;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-.tarjeta-cliente p{
-
-    color:#555;
-
-    margin:10px 0;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-
-.botones{
-
-    display:flex;
-
-    gap:15px;
-
-    margin-top:20px;
-
-}
-
-
-
-.editar{
-
-    flex:1;
-
-    background:#F8BBD0;
-
-    color:#6A1B4D;
-
-    font-weight:bold;
-
-}
-
-.editar:hover{
-
-    background:#EC407A;
-
-    color:white;
-
-}
-
-.eliminar{
-
-    flex:1;
-
-    background:#EF5350;
-
-    color:white;
-
-    font-weight:bold;
-
-}
-
-.eliminar:hover{
-
-    background:#C62828;
-
-}
-
-input:hover{
-    border-color:#EC407A;
-}
 /* ===========================
    ENCABEZADO
 =========================== */
 
 .encabezado{
-
     text-align:center;
+    margin-bottom:40px;
+}
 
-    margin-bottom:35px;
+.logo{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:50%;
+    background:#F8BBD0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 8px 20px rgba(236,64,122,.25);
+}
 
-    padding:25px;
-
-    border-radius:18px;
-
-    background:linear-gradient(135deg,#FCE4EC,#F8BBD0);
-
+.iconoLogo{
+    font-size:45px;
+    color:#C2185B;
 }
 
 .encabezado h1{
-
-    margin:0;
-
+    margin-top:20px;
     color:#C2185B;
+    font-size:40px;
+}
 
+.encabezado h3{
+    color:#7B1FA2;
+    margin-top:5px;
+    font-weight:500;
 }
 
 .encabezado p{
-
-    margin:10px 0;
-
-    color:#6A1B4D;
-
-    font-size:18px;
-
+    color:#795548;
+    font-style:italic;
+    margin-top:15px;
 }
 
-.encabezado small{
+.corazon{
+    color:#EC407A;
+    margin-left:8px;
+}
 
-    color:#7B1FA2;
+/* ===========================
+   TITULOS
+=========================== */
 
+h2{
+    color:#C2185B;
+}
+
+/* ===========================
+   LABELS
+=========================== */
+
+label{
+    display:block;
+    margin-bottom:8px;
+    margin-top:15px;
+    color:#6A1B4D;
+    font-weight:bold;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:2px solid #F8BBD0;
+    box-sizing:border-box;
     font-size:15px;
+    background:white;
+    color:#444;
+    transition:.3s;
+}
 
-    /*==========================
-FOOTER
-===========================*/
+input:focus{
+    outline:none;
+    border-color:#EC407A;
+    box-shadow:0 0 10px rgba(236,64,122,.25);
+}
+
+/* ===========================
+   BOTON PRINCIPAL
+=========================== */
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#EC407A;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#C2185B;
+    transform:translateY(-2px);
+}
+
+/* ===========================
+   LINEA
+=========================== */
+
+hr{
+    margin:40px 0;
+    border:none;
+    border-top:2px solid #F8BBD0;
+}
+
+/* ===========================
+   LISTA
+=========================== */
+
+.lista-clientes{
+    margin-top:25px;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
 
 .footer{
-
-    text-align:center;
-
     margin-top:40px;
+    text-align:center;
+    color:#888;
 
-    padding:20px;
+    /* ===========================
+   MENSAJES
+=========================== */
 
-    border-top:2px solid #F8BBD0;
-
-}
-
-.footer p{
-
-    color:#C2185B;
-
+.mensaje{
+    margin:20px 0;
+    padding:15px;
+    border-radius:12px;
     font-weight:bold;
+    text-align:center;
+    animation:aparecer .4s;
+}
 
-    margin-bottom:5px;
+.exito{
+    background:#E8F5E9;
+    color:#2E7D32;
+    border:2px solid #81C784;
+}
+
+.error{
+    background:#FFEBEE;
+    color:#C62828;
+    border:2px solid #EF9A9A;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 
 }
 
-.footer small{
+/* ===========================
+   TARJETA DE CLIENTE
+=========================== */
 
-    color:#777;
+.tarjeta-cliente{
+    background:#FFF8FB;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:20px;
+    border-left:8px solid #EC407A;
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+    transition:.3s;
+}
 
+.tarjeta-cliente:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 25px rgba(236,64,122,.20);
+}
+
+.tarjeta-cliente h3{
+    margin:0;
+    color:#C2185B;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:22px;
+}
+
+.tarjeta-cliente p{
+    margin:10px 0;
+    color:#6D4C41;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.botones{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.editar{
+    flex:1;
+    background:#81D4FA;
+    color:#01579B;
+    font-weight:bold;
+}
+
+.editar:hover{
+    background:#29B6F6;
+    color:white;
+}
+
+.eliminar{
+    flex:1;
+    background:#EF9A9A;
+    color:#B71C1C;
+    font-weight:bold;
+}
+
+.eliminar:hover{
+    background:#E53935;
+    color:white;
 }
 }
+

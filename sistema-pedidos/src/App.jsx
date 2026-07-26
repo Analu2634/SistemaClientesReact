@@ -1,42 +1,62 @@
+// Importa los estilos generales de la aplicación
 import "./App.css";
-import ClienteForm from "./components/ClienteForm";
-import { FaShoppingCart } from "react-icons/fa";
 
+// Importa el componente del formulario de clientes
+import ClienteForm from "./components/ClienteForm";
+
+// Importa los iconos
+import { FaIceCream, FaHeart } from "react-icons/fa";
+
+
+// Componente principal
 function App() {
+
   return (
+
     <div className="contenedor">
 
+      {/* Encabezado */}
       <header className="encabezado">
 
-        <h1>
-          <FaShoppingCart /> Sistema de Pedidos
-        </h1>
+        <div className="logo">
+
+          <FaIceCream className="iconoLogo" />
+
+        </div>
+
+        <h1>Dushi Ice Cream</h1>
+
+        <h3>Sistema de Gestión de Clientes</h3>
 
         <p>
-          Evidencia GA7-220501096-AA3-EV01
+          Endulzando cada momento
+          <FaHeart className="corazon" />
         </p>
-
-        <small>
-          Desarrollo Frontend con React
-        </small>
 
       </header>
 
+
+      {/* Formulario */}
+
       <ClienteForm />
+
+
+      {/* Pie de página */}
+
       <footer className="footer">
 
-  <p>
-    Sistema de Pedidos - React
-  </p>
+        <p>
 
-  <small>
-    Evidencia GA7-220501096-AA3-EV01
-  </small>
+          © 2026 Dushi Ice Cream
 
-</footer>
+        </p>
+
+      </footer>
 
     </div>
+
   );
+
 }
 
 export default App;

@@ -1,5 +1,10 @@
-import { useState } from "react";
+// Importa los Hooks de React
+import { useState, useEffect } from "react";
+
+// Importa el componente de la tarjeta del cliente
 import ClienteCard from "./ClienteCard";
+
+// Importa los iconos
 import {
   FaUser,
   FaPhone,
@@ -9,9 +14,13 @@ import {
   FaSave
 } from "react-icons/fa";
 
+// Componente principal
 function ClienteForm() {
 
+  // ============================
   // Estados del formulario
+  // ============================
+
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [direccion, setDireccion] = useState("");
@@ -19,47 +28,103 @@ function ClienteForm() {
   // Lista de clientes
   const [clientes, setClientes] = useState([]);
 
-  // Estados para edición
+  // Edición
   const [modoEdicion, setModoEdicion] = useState(false);
   const [indiceEditar, setIndiceEditar] = useState(null);
-const [buscar, setBuscar] = useState("");
 
+  // Buscador
+  const [buscar, setBuscar] = useState("");
+
+  // Mensajes
+  const [mensaje, setMensaje] = useState("");
+  const [tipoMensaje, setTipoMensaje] = useState("");
+
+  // ============================
+  // LocalStorage
+  // ============================
+
+  useEffect(() => {
+  const clientesGuardados = localStorage.getItem("clientes");
+
+  console.log("Leídos del LocalStorage:", clientesGuardados);
+
+  if (clientesGuardados) {
+    setClientes(JSON.parse(clientesGuardados));
+  }
+}, []);
+
+  useEffect(() => {
+  console.log("Guardando:", clientes);
+
+  localStorage.setItem(
+    "clientes",
+    JSON.stringify(clientes)
+  );
+}, [clientes]);
+  // ============================
   // Registrar cliente
+  // ============================
+
   function registrarCliente(e) {
 
     e.preventDefault();
 
+    // Validar campos vacíos
     if (
       nombre.trim() === "" ||
       telefono.trim() === "" ||
       direccion.trim() === ""
     ) {
-      alert("Por favor complete todos los campos.");
+
+      setMensaje("Todos los campos son obligatorios.");
+      setTipoMensaje("error");
+
+      setTimeout(() => {
+        setMensaje("");
+      }, 3000);
+
       return;
     }
 
-    // Si estamos editando, por ahora solo mostramos un mensaje.
-    // En el siguiente paso aquí irá la actualización.
+    // Validar teléfono
+    if (telefono.length !== 10) {
+
+      setMensaje("El teléfono debe tener exactamente 10 dígitos.");
+      setTipoMensaje("error");
+
+      setTimeout(() => {
+        setMensaje("");
+      }, 3000);
+
+      return;
+    }
+
+    // Editar
     if (modoEdicion) {
 
-  const copiaClientes = [...clientes];
+      const copiaClientes = [...clientes];
 
-  copiaClientes[indiceEditar] = {
-    nombre,
-    telefono,
-    direccion
-  };
+      copiaClientes[indiceEditar] = {
+        nombre,
+        telefono,
+        direccion
+      };
 
-  setClientes(copiaClientes);
+      setClientes(copiaClientes);
 
-  alert("Cliente actualizado correctamente.");
+      setMensaje("Cliente actualizado correctamente.");
+      setTipoMensaje("exito");
 
-  limpiarFormulario();
+      setTimeout(() => {
+        setMensaje("");
+      }, 3000);
 
-  return;
+      limpiarFormulario();
 
-}
+      return;
+    }
 
+    // Registrar nuevo cliente
     const nuevoCliente = {
       nombre,
       telefono,
@@ -68,12 +133,20 @@ const [buscar, setBuscar] = useState("");
 
     setClientes([...clientes, nuevoCliente]);
 
-    alert("Cliente registrado correctamente.");
+    setMensaje("Cliente registrado correctamente.");
+    setTipoMensaje("exito");
+
+    setTimeout(() => {
+      setMensaje("");
+    }, 3000);
 
     limpiarFormulario();
   }
 
-  // Cargar datos al formulario
+  // ============================
+  // Editar cliente
+  // ============================
+
   function editarCliente(cliente, index) {
 
     setNombre(cliente.nombre);
@@ -81,29 +154,41 @@ const [buscar, setBuscar] = useState("");
     setDireccion(cliente.direccion);
 
     setIndiceEditar(index);
-
     setModoEdicion(true);
 
   }
 
-  // Limpiar formulario
-
+  // ============================
   // Eliminar cliente
-function eliminarCliente(index) {
+  // ============================
 
-  const confirmar = window.confirm(
-    "¿Está seguro de eliminar este cliente?"
-  );
+  function eliminarCliente(index) {
 
-  if (!confirmar) return;
+    const confirmar = window.confirm(
+      "¿Está seguro de eliminar este cliente?"
+    );
 
-  const copiaClientes = [...clientes];
+    if (!confirmar) return;
 
-  copiaClientes.splice(index, 1);
+    const copiaClientes = [...clientes];
 
-  setClientes(copiaClientes);
+    copiaClientes.splice(index, 1);
 
-}
+    setClientes(copiaClientes);
+
+    setMensaje("Cliente eliminado correctamente.");
+    setTipoMensaje("exito");
+
+    setTimeout(() => {
+      setMensaje("");
+    }, 3000);
+
+  }
+
+  // ============================
+  // Limpiar formulario
+  // ============================
+
   function limpiarFormulario() {
 
     setNombre("");
@@ -115,95 +200,118 @@ function eliminarCliente(index) {
 
   }
 
-  return (
+  // ============================
+  // Buscar cliente
+  // ============================
+
+  const clientesFiltrados = clientes.filter((cliente) =>
+    cliente.nombre.toLowerCase().includes(
+      buscar.toLowerCase()
+    )
+  );
+    return (
 
     <div>
 
       <h2>
-  <FaUser /> Registro de Clientes
-</h2>
+        <FaUser /> Registro de Clientes
+      </h2>
 
+      {/* Mensajes */}
+      {mensaje && (
+        <div className={`mensaje ${tipoMensaje}`}>
+          {mensaje}
+        </div>
+      )}
+
+      {/* Formulario */}
       <form onSubmit={registrarCliente}>
 
         <label>
-  <FaUser /> Nombre
-</label>
+          <FaUser /> Nombre
+        </label>
 
         <input
           type="text"
+          placeholder="Ingrese el nombre"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
         />
 
         <label>
-  <FaPhone /> Teléfono
-</label>
+          <FaPhone /> Teléfono
+        </label>
 
         <input
           type="text"
+          placeholder="Ingrese el teléfono"
           value={telefono}
-          onChange={(e) => setTelefono(e.target.value)}
+          maxLength={10}
+          onChange={(e) => {
+            const soloNumeros = e.target.value.replace(/\D/g, "");
+            setTelefono(soloNumeros);
+          }}
         />
 
         <label>
-  <FaMapMarkerAlt /> Dirección
-</label>
+          <FaMapMarkerAlt /> Dirección
+        </label>
 
         <input
           type="text"
+          placeholder="Ingrese la dirección"
           value={direccion}
           onChange={(e) => setDireccion(e.target.value)}
         />
 
         <button type="submit">
-  {modoEdicion ? (
-    <>
-      <FaSave /> Actualizar Cliente
-    </>
-  ) : (
-    <>
-      <FaSave /> Registrar Cliente
-    </>
-  )}
-</button>
+          <FaSave />
+          {modoEdicion
+            ? " Actualizar Cliente"
+            : " Registrar Cliente"}
+        </button>
 
       </form>
 
       <hr />
-      <label>
-  <FaSearch /> Buscar cliente
-</label>
 
-<input
-  type="text"
-  placeholder="Escriba el nombre del cliente..."
-  value={buscar}
-  onChange={(e) => setBuscar(e.target.value)}
-/>
+      {/* Buscador */}
+
+      <label>
+        <FaSearch /> Buscar cliente
+      </label>
+
+      <input
+        type="text"
+        placeholder="Escriba el nombre del cliente..."
+        value={buscar}
+        onChange={(e) => setBuscar(e.target.value)}
+      />
+
       <h2>
-  <FaUsers /> Clientes registrados ({clientes.length})
-</h2>
+        <FaUsers /> Clientes registrados ({clientesFiltrados.length})
+      </h2>
 
       <div className="lista-clientes">
 
-        {
-          clientes
-  .filter((cliente) =>
-    cliente.nombre
-      .toLowerCase()
-      .includes(buscar.toLowerCase())
-  )
-  .map((cliente, index) => (
+        {clientesFiltrados.length === 0 ? (
+
+          <p>No hay clientes registrados.</p>
+
+        ) : (
+
+          clientesFiltrados.map((cliente, index) => (
 
             <ClienteCard
-    key={index}
-    cliente={cliente}
-    editar={() => editarCliente(cliente, index)}
-    eliminar={() => eliminarCliente(index)}
-/>
+              key={index}
+              cliente={cliente}
+              editar={() => editarCliente(cliente, index)}
+              eliminar={() => eliminarCliente(index)}
+            />
 
           ))
-        }
+
+        )}
 
       </div>
 
